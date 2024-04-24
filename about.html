@@ -22,8 +22,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/style.css">
-        <script
-                src="https://www.google.com/recaptcha/enterprise.js?render=6LdBasUpAAAAAGRsR7LGriQOyr89JVEw9EPUg-Sf"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render=6LdBasUpAAAAAGRsR7LGriQOyr89JVEw9EPUg-Sf"></script>
         <!-- Your code -->
         <style>
                 /* Adjust the position of the reCAPTCHA icon */
@@ -337,9 +336,13 @@ Mombasa Tea Traders Limited, established on April 19, 2004, operates under the C
         <script src="whatsapp-bubble.js"></script>
         <script>
                 window.addEventListener('load', async function () {
-                        grecaptcha.enterprise.ready(async () => {
-                                const token = await grecaptcha.enterprise.execute('6LdBasUpAAAAAGRsR7LGriQOyr89JVEw9EPUg-Sf', { action: 'LOGIN' });
-                                // You can handle the token here or send it to your server for further processing
+                        const siteKey = '6LdBasUpAAAAAGRsR7LGriQOyr89JVEw9EPUg-Sf'; // Replace 'YOUR_SITE_KEY' with your actual site key
+                        const action = 'submit'; // Replace 'submit' with the action you want to verify
+
+                        grecaptcha.ready(async () => {
+                                const token = await grecaptcha.execute(siteKey, { action });
+                                // Now you have the token, you can handle it or send it to your server for further processing
+                                // console.log("reCAPTCHA token:", token);
                         });
                 });
         </script>
